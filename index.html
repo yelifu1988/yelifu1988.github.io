@@ -340,22 +340,7 @@
 </li>
 <li>github地址<a href="https://github.com/yelifu1988/SimpleCrawler/tree/master" target="_blank" rel="external">https://github.com/yelifu1988/SimpleCrawler/tree/master</a></li>
 </ol>
-<h3 id="js代码"><a href="#js代码" class="headerlink" title="js代码"></a>js代码</h3><p><code><br>$(function(){<br>            var colors = [‘#16a085’, ‘#27ae60’, ‘#2c3e50’, ‘#f39c12’, ‘#e74c3c’, ‘#9b59b6’, ‘#FB6964’, ‘#342224’, “#472E32”, “#BDBB99”, “#77B1A9”, “#73A857”];<br>            function getchange(){<br>                $.ajax({<br>                    type:”get”,<br>                    dataType: “json”,<br>                    url:”data/json.json”,<br>                    success:function(infos){<br>                        var info=Math.floor(Math.random() * infos.length);<br>                        //alert(infos[info].text);<br>                        $(“.main-text”).animate({<br>                            opacity: 0<br>                        },500,function(){<br>                             $(this).animate({<br>                            opacity: 1<br>                          }, 500);<br>                          $(“.main-text”).text(infos[info].text);<br>                        });<br>                        $(“.zuozhe”).animate({<br>                            opacity: 0<br>                        },500,function(){<br>                             $(this).animate({<br>                            opacity: 1<br>                          }, 500);<br>                          $(“.zuozhe”).text(infos[info].zuozhe);<br>                        });</code></p>
-<pre><code>            }
-
-        })
-        var color = Math.floor(Math.random() * colors.length);
-        $(&quot;body&quot;).animate({
-            backgroundColor: colors[color],
-            color: colors[color]
-        },1000);
-        $(&quot;#btn&quot;).animate({
-            backgroundColor: colors[color]
-        },1000);
-    }
-    $(&quot;#btn&quot;).on(&quot;click&quot;,getchange)
-})
-</code></pre><p></p>
+<h3 id="js代码"><a href="#js代码" class="headerlink" title="js代码"></a>js代码</h3><p><code><br>var express = require(‘express’);<br>var superagent = require(‘superagent’);<br>var cheerio =require(‘cheerio’);<br>// 建立 express 实例<br>var app = express();<br>app.get(‘/‘, function (req, res, next) {<br>// 用 superagent 去抓取 <a href="https://cnodejs.org/" target="_blank" rel="external">https://cnodejs.org/</a> 的内容<br>superagent.get(‘<a href="https://cnodejs.org/" target="_blank" rel="external">https://cnodejs.org/</a>‘)<br>    .end(function (err, sres) {<br>      // 常规的错误处理<br>      if (err) {<br>        return next(err);<br>      }<br>      // sres.text 里面存储着网页的 html 内容，将它传给 cheerio.load 之后<br>      // 就可以得到一个实现了 jquery 接口的变量，我们习惯性地将它命名为 <code>$</code><br>      // 剩下就都是 jquery 的内容了<br>      var $ = cheerio.load(sres.text);<br>      var items = [];<br>      //找到要爬的标签 遍历所有$()里的标签元素<br>      $(‘#topic_list .topic_title’).each(function (idx, element) {<br>        var $element = $(element);<br>        //获取这个标签元素的属性 并push到定义好的items数组中<br>        items.push({<br>          title: $element.attr(‘title’),<br>          href: $element.attr(‘href’),<br>        });<br>      });<br>      res.send(items);<br>    });<br>});<br>//抓取李毅吧网页内容的示例<br>//app.get(‘/‘, function (req, res, next) {<br>//superagent.get(‘<a href="http://tieba.baidu.com/f?kw=%C0%EE%D2%E3&amp;fr=ala0&amp;tpl=5" target="_blank" rel="external">http://tieba.baidu.com/f?kw=%C0%EE%D2%E3&amp;fr=ala0&amp;tpl=5</a>‘)<br>//  .end(function (err, sres) {<br>//    if (err) {<br>//      return next(err);<br>//    }<br>//    var $ = cheerio.load(sres.text);<br>//    var items = [];<br>//    $(‘.threadlist_title a’).each(function (idx, element) {<br>//      var $element = $(element);<br>//      items.push({<br>//        title: $element.attr(‘title’),<br>//        href: $element.attr(‘href’),<br>//      });<br>//    });<br>//    res.send(items);<br>//  });<br>//});<br>app.listen(3000, function (req, res,next) {<br>  console.log(‘app is running at port 3000’);<br>});<br>//输入命令node app.js 让程序跑起来！<br></code></p>
 
           
         
