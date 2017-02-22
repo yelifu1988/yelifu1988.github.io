@@ -330,20 +330,19 @@
       
         
           
-            <h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><ol>
-<li>搭建 Node.js 开发环境</li>
-<li>安装依赖模块express，superagent 和 cheerio<ul>
-<li>Express 基于Node.js 平台,快速、开放、极简的 web 开发框架 <a href="http://www.expressjs.com.cn/" target="_blank" rel="external">http://www.expressjs.com.cn/</a></li>
-<li>SuperAgent是轻量级更为优化的ajax API <a href="https://yq.aliyun.com/articles/53379" target="_blank" rel="external">https://yq.aliyun.com/articles/53379</a></li>
-<li>cheerio是nodejs的抓取页面模块，为服务器特别定制的，快速、灵活、实施的jQuery核心实现。适合各种Web爬虫程序。<a href="https://cnodejs.org/topic/5203a71844e76d216a727d2e" target="_blank" rel="external">https://cnodejs.org/topic/5203a71844e76d216a727d2e</a></li>
-</ul>
-</li>
-<li>github地址<a href="https://github.com/yelifu1988/SimpleCrawler/tree/master" target="_blank" rel="external">https://github.com/yelifu1988/SimpleCrawler/tree/master</a></li>
-</ol>
-<h3 id="代码效果"><a href="#代码效果" class="headerlink" title="代码效果"></a>代码效果</h3><p>输出 CNode(<a href="https://cnodejs.org/" target="_blank" rel="external">https://cnodejs.org/</a> )&amp;&amp;输出李毅吧(<a href="http://tieba.baidu.com/f?kw=%C0%EE%D2%E3&amp;fr=ala0&amp;tpl=5" target="_blank" rel="external">http://tieba.baidu.com/f?kw=%C0%EE%D2%E3&amp;fr=ala0&amp;tpl=5</a>) 社区首页的所有帖子标题和链接，以 json 的形式。</p>
-<h3 id="js代码"><a href="#js代码" class="headerlink" title="js代码"></a>js代码</h3><p><code><br>var express = require(‘express’);<br>var superagent = require(‘superagent’);<br>var cheerio =require(‘cheerio’);<br>// 建立 express 实例<br>var app = express();<br>app.get(‘/‘, function (req, res, next) {<br>// 用 superagent 去抓取 <a href="https://cnodejs.org/" target="_blank" rel="external">https://cnodejs.org/</a> 的内容<br>superagent.get(‘<a href="https://cnodejs.org/" target="_blank" rel="external">https://cnodejs.org/</a>‘)<br>    .end(function (err, sres) {<br>      // 常规的错误处理<br>      if (err) {<br>        return next(err);<br>      }<br>      // sres.text 里面存储着网页的 html 内容，将它传给 cheerio.load 之后<br>      // 就可以得到一个实现了 jquery 接口的变量，我们习惯性地将它命名为 <code>$</code><br>      // 剩下就都是 jquery 的内容了<br>      var $ = cheerio.load(sres.text);<br>      var items = [];<br>      //找到要爬的标签 遍历所有$()里的标签元素<br>      $(‘#topic_list .topic_title’).each(function (idx, element) {<br>        var $element = $(element);<br>        //获取这个标签元素的属性 并push到定义好的items数组中<br>        items.push({<br>          title: $element.attr(‘title’),<br>          href: $element.attr(‘href’),<br>        });<br>      });<br>      res.send(items);<br>    });<br>});<br>//抓取李毅吧网页内容的示例<br>//app.get(‘/‘, function (req, res, next) {<br>//superagent.get(‘<a href="http://tieba.baidu.com/f?kw=%C0%EE%D2%E3&amp;fr=ala0&amp;tpl=5" target="_blank" rel="external">http://tieba.baidu.com/f?kw=%C0%EE%D2%E3&amp;fr=ala0&amp;tpl=5</a>‘)<br>//  .end(function (err, sres) {<br>//    if (err) {<br>//      return next(err);<br>//    }<br>//    var $ = cheerio.load(sres.text);<br>//    var items = [];<br>//    $(‘.threadlist_title a’).each(function (idx, element) {<br>//      var $element = $(element);<br>//      items.push({<br>//        title: $element.attr(‘title’),<br>//        href: $element.attr(‘href’),<br>//      });<br>//    });<br>//    res.send(items);<br>//  });<br>//});<br>app.listen(3000, function (req, res,next) {<br>  console.log(‘app is running at port 3000’);<br>});<br>//输入命令node app.js 让程序跑起来！<br></code></p>
-
-          
+          要点
+搭建 Node.js 开发环境
+安装依赖模块express，superagent 和 cheerio
+Express 基于Node.js 平台,快速、开放、极简的 web 开发框架 http://www.expressjs.com.cn/
+SuperAgent是轻量级更为优化的ajax API
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/22/SimpleCrawlerc/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -462,59 +461,23 @@
       
         
           
-            <h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><ol>
-<li>范围内随机数</li>
-<li>ajax本地请求</li>
-<li>json取值</li>
-<li>css3动画</li>
-<li>背景的透明转换要用到jQuery UI - v1.11.2.js</li>
-<li><p>github地址<a href="https://github.com/yelifu1988/renote" target="_blank" rel="external">https://github.com/yelifu1988/renote</a></p>
-<h3 id="js代码"><a href="#js代码" class="headerlink" title="js代码"></a>js代码</h3><p><code><br>$(function(){</code></p>
-<pre><code>    var colors = [&apos;#16a085&apos;, &apos;#27ae60&apos;, &apos;#2c3e50&apos;, &apos;#f39c12&apos;, &apos;#e74c3c&apos;, &apos;#9b59b6&apos;, &apos;#FB6964&apos;, &apos;#342224&apos;, &quot;#472E32&quot;, &quot;#BDBB99&quot;, &quot;#77B1A9&quot;, &quot;#73A857&quot;];
-    function getchange(){
-        $.ajax({
-            type:&quot;get&quot;,
-            dataType: &quot;json&quot;,
-            url:&quot;data/json.json&quot;,
-            success:function(infos){
-                var info=Math.floor(Math.random() * infos.length);
-                //alert(infos[info].text);
-                $(&quot;.main-text&quot;).animate({
-                    opacity: 0
-                },500,function(){
-                     $(this).animate({
-                    opacity: 1
-                  }, 500);
-                  $(&quot;.main-text&quot;).text(infos[info].text);
-                });
-                $(&quot;.zuozhe&quot;).animate({
-                    opacity: 0
-                },500,function(){
-                     $(this).animate({
-                    opacity: 1
-                  }, 500);
-                  $(&quot;.zuozhe&quot;).text(infos[info].zuozhe);
-                });
-
-            }
-
-        })
-        var color = Math.floor(Math.random() * colors.length);
-        $(&quot;body&quot;).animate({
-            backgroundColor: colors[color],
-            color: colors[color]
-        },1000);
-        $(&quot;#btn&quot;).animate({
-            backgroundColor: colors[color]
-        },1000);
-    }
-    $(&quot;#btn&quot;).on(&quot;click&quot;,getchange)
-})
-</code></pre><p></p>
-</li>
-</ol>
-
-          
+          要点
+范围内随机数
+ajax本地请求
+json取值
+css3动画
+背景的透明转换要用到jQuery UI - v1.11.2.js
+github地址https://github.com/yelifu1988/renote
+js代码$(function(){
+    var colors = [&ap
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/19/new-article/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -633,17 +596,15 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/13/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
