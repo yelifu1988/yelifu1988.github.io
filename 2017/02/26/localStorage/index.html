@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="localStorage," />
 
 
 
@@ -87,19 +87,19 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="description" content="概念什么是 HTML5 Web 存储：使用HTML5可以在本地存储用户的浏览数据。早些时候,本地存储使用的是 cookie。但是Web 存储需要更加的安全与快速. 这些数据不会被保存在服务器上，但是这些数据只用于用户请求网站数据上.它也可以存储大量的数据，而不影响网站的性能.数据以 键/值 对存在, web网页的数据只允许该网页访问使用。
+localStorage 和 sessionStorage">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/02/13/hello-world/index.html">
+<meta property="og:title" content="html5 wed存储之localStorage">
+<meta property="og:url" content="http://yoursite.com/2017/02/26/localStorage/index.html">
 <meta property="og:site_name" content="杨勇的博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2017-02-13T14:07:53.113Z">
+<meta property="og:description" content="概念什么是 HTML5 Web 存储：使用HTML5可以在本地存储用户的浏览数据。早些时候,本地存储使用的是 cookie。但是Web 存储需要更加的安全与快速. 这些数据不会被保存在服务器上，但是这些数据只用于用户请求网站数据上.它也可以存储大量的数据，而不影响网站的性能.数据以 键/值 对存在, web网页的数据只允许该网页访问使用。
+localStorage 和 sessionStorage">
+<meta property="og:updated_time" content="2017-02-26T15:30:53.072Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="html5 wed存储之localStorage">
+<meta name="twitter:description" content="概念什么是 HTML5 Web 存储：使用HTML5可以在本地存储用户的浏览数据。早些时候,本地存储使用的是 cookie。但是Web 存储需要更加的安全与快速. 这些数据不会被保存在服务器上，但是这些数据只用于用户请求网站数据上.它也可以存储大量的数据，而不影响网站的性能.数据以 键/值 对存在, web网页的数据只允许该网页访问使用。
+localStorage 和 sessionStorage">
 
 
 
@@ -127,13 +127,13 @@ Quick">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/13/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/02/26/localStorage/"/>
 
 
 
 
 
-  <title> Hello World | 杨勇的博客 </title>
+  <title> html5 wed存储之localStorage | 杨勇的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +252,7 @@ Quick">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/13/hello-world/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/26/localStorage/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="杨勇">
@@ -276,7 +276,7 @@ Quick">
             
             
               
-                Hello World
+                html5 wed存储之localStorage
               
             
           </h1>
@@ -291,8 +291,8 @@ Quick">
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-13T22:07:53+08:00">
-                2017-02-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-26T23:06:39+08:00">
+                2017-02-26
               </time>
             
 
@@ -327,15 +327,33 @@ Quick">
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h3 id="什么是-HTML5-Web-存储："><a href="#什么是-HTML5-Web-存储：" class="headerlink" title="什么是 HTML5 Web 存储："></a>什么是 HTML5 Web 存储：</h3><p>使用HTML5可以在本地存储用户的浏览数据。<br>早些时候,本地存储使用的是 cookie。但是Web 存储需要更加的安全与快速. 这些数据不会被保存在服务器上，但是这些数据只用于用户请求网站数据上.它也可以存储大量的数据，而不影响网站的性能.<br>数据以 键/值 对存在, web网页的数据只允许该网页访问使用。</p>
+<h3 id="localStorage-和-sessionStorage"><a href="#localStorage-和-sessionStorage" class="headerlink" title="localStorage 和 sessionStorage"></a>localStorage 和 sessionStorage</h3><h4 id="客户端存储数据的两个对象为：localStorage-和-sessionStorage"><a href="#客户端存储数据的两个对象为：localStorage-和-sessionStorage" class="headerlink" title="客户端存储数据的两个对象为：localStorage 和 sessionStorage"></a>客户端存储数据的两个对象为：localStorage 和 sessionStorage</h4><ul>
+<li>localStorage -没有时间限制的数据存储 除非手动删除</li>
+<li>sessionStorage -方法针对一个 session 进行数据存储。当用户关闭浏览器窗口后，数据会被删除。</li>
+<li>localStorage与sessionStorage的唯一一点区别就是localStorage属于永久性存储，而sessionStorage属于当会话结束的时候，sessionStorage中的键值对会被清空<h4 id="不管是-localStorage，还是-sessionStorage，可使用的API都相同，常用的有如下几个（以localStorage为例）："><a href="#不管是-localStorage，还是-sessionStorage，可使用的API都相同，常用的有如下几个（以localStorage为例）：" class="headerlink" title="不管是 localStorage，还是 sessionStorage，可使用的API都相同，常用的有如下几个（以localStorage为例）："></a>不管是 localStorage，还是 sessionStorage，可使用的API都相同，常用的有如下几个（以localStorage为例）：</h4></li>
+<li>保存数据：localStorage.setItem(key,value);</li>
+<li>读取数据：localStorage.getItem(key);</li>
+<li>删除单个数据：localStorage.removeItem(key);</li>
+<li>删除所有数据：localStorage.clear();</li>
+<li>得到某个索引的key：localStorage.key(index);<h4 id="localStorage的优势"><a href="#localStorage的优势" class="headerlink" title="localStorage的优势"></a>localStorage的优势</h4></li>
+<li>localStorage拓展了cookie的4K限制</li>
+<li>localStorage会可以将第一次请求的数据直接存储到本地，这个相当于一个5M大小的针对于前端页面的数据库，相比于cookie可以节约带宽，但是这个却是只有在高版本的浏览器中才支持的<h4 id="localStorage的局限"><a href="#localStorage的局限" class="headerlink" title="localStorage的局限"></a>localStorage的局限</h4></li>
+<li>浏览器的大小不统一，并且在IE8以上的IE版本才支持localStorage这个属性</li>
+<li>目前所有的浏览器中都会把localStorage的值类型限定为string类型，这个在对我们日常比较常见的JSON对象类型需要一些转换</li>
+<li>localStorage在浏览器的隐私模式下面是不可读取的</li>
+<li>localStorage本质上是对字符串的读取，如果存储内容多的话会消耗内存空间，会导致页面变卡</li>
+<li>localStorage不能被爬虫抓取到</li>
+</ul>
+<h3 id="在使用-web-存储前-应检查浏览器是否支持-localStorage-和sessionStorage"><a href="#在使用-web-存储前-应检查浏览器是否支持-localStorage-和sessionStorage" class="headerlink" title="在使用 web 存储前,应检查浏览器是否支持 localStorage 和sessionStorage:"></a>在使用 web 存储前,应检查浏览器是否支持 localStorage 和sessionStorage:</h3><p><code><br>    if(typeof(Storage)!==”undefined”)<br>    {<br>        // 是的! 支持 localStorage  sessionStorage 对象!<br>        // 一些代码…..<br>    } else {<br>        // 抱歉! 不支持 web 存储。<br>    }<br></code></p>
+<h3 id="使用sessionStorage、localStorage存储数组与对象"><a href="#使用sessionStorage、localStorage存储数组与对象" class="headerlink" title="使用sessionStorage、localStorage存储数组与对象"></a>使用sessionStorage、localStorage存储数组与对象</h3><p>storage只能存储字符串的数据，对于JS中常用的数组或对象却不能直接存储。<br>但我们可以通过JSON对象提供的parse和stringify将其他数据类型转化成字符串，<br>再存储到storage中就可以了。请看下面的代码。<br><code><br>    var obj = { name:’Jim’ };<br>    var str = JSON.stringify(obj);   </code></p>
+<pre><code>//存入   
+sessionStorage.obj = str;   
+//读取   
+str = sessionStorage.obj;   
+//重新转换为对象   
+obj = JSON.parse(str);  
+</code></pre><p></p>
 
       
     </div>
@@ -357,6 +375,12 @@ Quick">
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/localStorage/" rel="tag"># localStorage</a>
+          
+        </div>
+      
 
       
         
@@ -366,15 +390,15 @@ Quick">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/02/22/SimpleCrawlerc/" rel="next" title="使用 superagent 与 cheerio 完成简单爬虫">
+                <i class="fa fa-chevron-left"></i> 使用 superagent 与 cheerio 完成简单爬虫
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/19/new-article/" rel="prev" title="随机背景与短语js">
-                随机背景与短语js <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -492,7 +516,7 @@ Quick">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是-HTML5-Web-存储："><span class="nav-number">1.0.1.</span> <span class="nav-text">什么是 HTML5 Web 存储：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#localStorage-和-sessionStorage"><span class="nav-number">1.0.2.</span> <span class="nav-text">localStorage 和 sessionStorage</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端存储数据的两个对象为：localStorage-和-sessionStorage"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">客户端存储数据的两个对象为：localStorage 和 sessionStorage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不管是-localStorage，还是-sessionStorage，可使用的API都相同，常用的有如下几个（以localStorage为例）："><span class="nav-number">1.0.2.2.</span> <span class="nav-text">不管是 localStorage，还是 sessionStorage，可使用的API都相同，常用的有如下几个（以localStorage为例）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#localStorage的优势"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">localStorage的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#localStorage的局限"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">localStorage的局限</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在使用-web-存储前-应检查浏览器是否支持-localStorage-和sessionStorage"><span class="nav-number">1.0.3.</span> <span class="nav-text">在使用 web 存储前,应检查浏览器是否支持 localStorage 和sessionStorage:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用sessionStorage、localStorage存储数组与对象"><span class="nav-number">1.0.4.</span> <span class="nav-text">使用sessionStorage、localStorage存储数组与对象</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
