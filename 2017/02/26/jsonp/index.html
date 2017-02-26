@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="superagent&&cheerio," />
+  <meta name="keywords" content="jsonp," />
 
 
 
@@ -87,31 +87,16 @@
 
 
 
-<meta name="description" content="要点
-搭建 Node.js 开发环境
-安装依赖模块express，superagent 和 cheerio
-Express 基于Node.js 平台,快速、开放、极简的 web 开发框架 http://www.expressjs.com.cn/
-SuperAgent是轻量级更为优化的ajax API https://yq.aliyun.com/articles/53379
-cheerio是node">
+<meta name="description" content="概念json这里先说以一下json和jsonp：JSON其实就是JavaScript中的一个对象，跟var obj={}在质上完全一样，只是在量上可以无限扩展。简单地讲，json其实就是JavaScript中的对象(Object)和数组(Array，其实也是对象)json易于人阅读和编写，也易于机器解析和生成，相对网络传输速率较高，功能型网站前后端往往要频繁大量交换数据，而json凭借其强大的表现">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用 superagent 与 cheerio 完成简单爬虫">
-<meta property="og:url" content="http://yoursite.com/2017/02/22/SimpleCrawlerc/index.html">
+<meta property="og:title" content="跨域请求之jsonp">
+<meta property="og:url" content="http://yoursite.com/2017/02/26/jsonp/index.html">
 <meta property="og:site_name" content="杨勇的博客">
-<meta property="og:description" content="要点
-搭建 Node.js 开发环境
-安装依赖模块express，superagent 和 cheerio
-Express 基于Node.js 平台,快速、开放、极简的 web 开发框架 http://www.expressjs.com.cn/
-SuperAgent是轻量级更为优化的ajax API https://yq.aliyun.com/articles/53379
-cheerio是node">
-<meta property="og:updated_time" content="2017-02-21T18:08:17.626Z">
+<meta property="og:description" content="概念json这里先说以一下json和jsonp：JSON其实就是JavaScript中的一个对象，跟var obj={}在质上完全一样，只是在量上可以无限扩展。简单地讲，json其实就是JavaScript中的对象(Object)和数组(Array，其实也是对象)json易于人阅读和编写，也易于机器解析和生成，相对网络传输速率较高，功能型网站前后端往往要频繁大量交换数据，而json凭借其强大的表现">
+<meta property="og:updated_time" content="2017-02-26T16:21:08.646Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用 superagent 与 cheerio 完成简单爬虫">
-<meta name="twitter:description" content="要点
-搭建 Node.js 开发环境
-安装依赖模块express，superagent 和 cheerio
-Express 基于Node.js 平台,快速、开放、极简的 web 开发框架 http://www.expressjs.com.cn/
-SuperAgent是轻量级更为优化的ajax API https://yq.aliyun.com/articles/53379
-cheerio是node">
+<meta name="twitter:title" content="跨域请求之jsonp">
+<meta name="twitter:description" content="概念json这里先说以一下json和jsonp：JSON其实就是JavaScript中的一个对象，跟var obj={}在质上完全一样，只是在量上可以无限扩展。简单地讲，json其实就是JavaScript中的对象(Object)和数组(Array，其实也是对象)json易于人阅读和编写，也易于机器解析和生成，相对网络传输速率较高，功能型网站前后端往往要频繁大量交换数据，而json凭借其强大的表现">
 
 
 
@@ -139,13 +124,13 @@ cheerio是node">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/22/SimpleCrawlerc/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/02/26/jsonp/"/>
 
 
 
 
 
-  <title> 使用 superagent 与 cheerio 完成简单爬虫 | 杨勇的博客 </title>
+  <title> 跨域请求之jsonp | 杨勇的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -264,7 +249,7 @@ cheerio是node">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/22/SimpleCrawlerc/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/26/jsonp/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="杨勇">
@@ -288,7 +273,7 @@ cheerio是node">
             
             
               
-                使用 superagent 与 cheerio 完成简单爬虫
+                跨域请求之jsonp
               
             
           </h1>
@@ -303,8 +288,8 @@ cheerio是node">
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-22T01:18:31+08:00">
-                2017-02-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-26T23:53:55+08:00">
+                2017-02-26
               </time>
             
 
@@ -339,18 +324,66 @@ cheerio是node">
       
 
       
-        <h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><ol>
-<li>搭建 Node.js 开发环境</li>
-<li>安装依赖模块express，superagent 和 cheerio<ul>
-<li>Express 基于Node.js 平台,快速、开放、极简的 web 开发框架 <a href="http://www.expressjs.com.cn/" target="_blank" rel="external">http://www.expressjs.com.cn/</a></li>
-<li>SuperAgent是轻量级更为优化的ajax API <a href="https://yq.aliyun.com/articles/53379" target="_blank" rel="external">https://yq.aliyun.com/articles/53379</a></li>
-<li>cheerio是nodejs的抓取页面模块，为服务器特别定制的，快速、灵活、实施的jQuery核心实现。适合各种Web爬虫程序。<a href="https://cnodejs.org/topic/5203a71844e76d216a727d2e" target="_blank" rel="external">https://cnodejs.org/topic/5203a71844e76d216a727d2e</a></li>
-</ul>
+        <h2 id="概念json"><a href="#概念json" class="headerlink" title="概念json"></a>概念json</h2><p>这里先说以一下json和jsonp：JSON其实就是JavaScript中的一个对象，跟var obj={}在质上完全一样，只是在量上可以无限扩展。简单地讲，<br>json其实就是JavaScript中的对象(Object)和数组(Array，其实也是对象)<br>json易于人阅读和编写，也易于机器解析和生成，相对网络传输速率较高，功能型网站前后端往往要频繁大量交换数据，<br>而json凭借其强大的表现力和简洁的方式渐渐地成为理想的前后端数据交换语言。<br>同源下的前后端数据交换格式确定使用json了。</p>
+<h2 id="概念jsonp"><a href="#概念jsonp" class="headerlink" title="概念jsonp"></a>概念jsonp</h2><p>如果我想获取别人网站上提供的数据肿么做到呢？也就是跨域读取数据问题,<br>json行不行呢？因为json只是普通的文本格式，<br>能让你这样就轻松拿到那服务端就没有任何安全和保密性可言了。<br>那么就使用jsonp。<br>jsonp不是一项新技术 他只是被发现的一种方法而已<br>json是理想的数据交换格式，但没办法跨域直接获取，于是就将json包裹(padding)在一个合法的js语句中作为js文件传过去。<br>这就是json和jsonp的区别，json是想要的东西，jsonp是达到这个目的而普遍采用的一种方法，<br>当然最终获得和处理的还是json。所以说json是目的，jsonp只是手段。<br>json总会用到，而jsonp只有在跨域获取数据才会用到。</p>
+<h2 id="jsonp简单用法"><a href="#jsonp简单用法" class="headerlink" title="jsonp简单用法"></a>jsonp简单用法</h2><ol>
+<li>动态创建script标签src加载数据地址</li>
+<li>查看接口文档或者研究数据地址的参数和格式</li>
+<li>创建callback函数取数据</li>
+<li><p>先执行定义的函数再创建script标签拿到数据</p>
+<h2 id="文字不够直观-看的也许一脸懵逼，废话不多说直接上代码"><a href="#文字不够直观-看的也许一脸懵逼，废话不多说直接上代码" class="headerlink" title="文字不够直观 看的也许一脸懵逼，废话不多说直接上代码"></a>文字不够直观 看的也许一脸懵逼，废话不多说直接上代码</h2><p><code><br>&lt;!DOCTYPE html&gt;<br><html><br> <head></head></html></code></p>
+<pre><code>&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;baidu&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+    #q{width: 300px;height: 30px;padding: 5px;border: 1px solid orangered;font-size: 16px;}
+    #ul1{display: none; width: 310px;border: 1px solid orange;margin: 0;padding: 0;}
+    li a{line-height: 30px;padding: 5px;text-decoration: none;color: #000000;display: block;}
+    li a:hover{background-color: orange;color: white;}
+&lt;/style&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    function yangyong(data){//callback函数
+        var oUl=document.getElementById(&apos;ul1&apos;);
+        var html=&apos;&apos;;
+
+        if (data.g.length) {
+            oUl.style.display=&apos;block&apos;;
+            for (var i=0;i&lt;data.g.length;i++) {
+                html+=&apos;&lt;li&gt;&lt;a href=&quot;https://www.baidu.com/s?wd=&apos;+ data.g[i].q +&apos;&quot;&gt;&apos;+ data.g[i].q +&apos;&lt;/a&gt;&lt;/li&gt;&apos;    
+            }
+            oUl.innerHTML=html;
+        }else{
+            oUl.style.display=&apos;none&apos;;
+        }
+    };
+
+    window.onload=function(){
+        var oQ=document.getElementById(&apos;q&apos;);
+        var oUl=document.getElementById(&apos;ul1&apos;);
+        oQ.onkeyup=function(){
+            if (this.value!=&apos;&apos;) {
+                var oScript=document.createElement(&apos;script&apos;);
+                oScript.src=&apos;https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=&apos;+ this.value +&apos;&amp;json=1&amp;p=3&amp;sid=1451_21099_22035_21671&amp;req=2&amp;csor=1&amp;cb=yangyong&apos;
+                document.body.appendChild(oScript);
+            }else{
+            oUl.style.display=&apos;none&apos;;
+            }
+        }
+    }
+    //            百度联想与搜索
+    //            先执行定义的函数再创建script标签拿到数据
+    //            获取接口 传callback函数 callback 自己定义
+    //            1打开百度  打开控制台Network查看请求信息  找到请求文件  复制文件地址  打开 研究请求的参数和格式 然后用jsonp的原理进行js的编写 如上
+    //            https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=a&amp;json=1&amp;p=3&amp;sid=1451_21099_22035_21671&amp;req=2&amp;csor=1&amp;cb=jQuery110205159622696299948_1487341476702&amp;_=1487341476705
+&lt;/script&gt;
+</code></pre><p> <br> <body></body></p>
+<pre><code>&lt;h2&gt;百度联想与搜索&lt;/h2&gt;
+&lt;input type=&quot;text&quot; name=&quot;&quot; id=&quot;q&quot; value=&quot;&quot; /&gt;
+&lt;ul id=&quot;ul1&quot;&gt;
+
+&lt;/ul&gt;
+</code></pre><p> <br><br></p>
 </li>
-<li>github地址<a href="https://github.com/yelifu1988/SimpleCrawler/tree/master" target="_blank" rel="external">https://github.com/yelifu1988/SimpleCrawler/tree/master</a></li>
 </ol>
-<h3 id="代码效果"><a href="#代码效果" class="headerlink" title="代码效果"></a>代码效果</h3><p>输出 CNode(<a href="https://cnodejs.org/" target="_blank" rel="external">https://cnodejs.org/</a> )&amp;&amp;输出李毅吧(<a href="http://tieba.baidu.com/f?kw=%C0%EE%D2%E3&amp;fr=ala0&amp;tpl=5" target="_blank" rel="external">http://tieba.baidu.com/f?kw=%C0%EE%D2%E3&amp;fr=ala0&amp;tpl=5</a>) 社区首页的所有帖子标题和链接，以 json 的形式。</p>
-<h3 id="js代码"><a href="#js代码" class="headerlink" title="js代码"></a>js代码</h3><p><code><br>var express = require(‘express’);<br>var superagent = require(‘superagent’);<br>var cheerio =require(‘cheerio’);<br>// 建立 express 实例<br>var app = express();<br>app.get(‘/‘, function (req, res, next) {<br>// 用 superagent 去抓取 <a href="https://cnodejs.org/" target="_blank" rel="external">https://cnodejs.org/</a> 的内容<br>superagent.get(‘<a href="https://cnodejs.org/" target="_blank" rel="external">https://cnodejs.org/</a>‘)<br>    .end(function (err, sres) {<br>      // 常规的错误处理<br>      if (err) {<br>        return next(err);<br>      }<br>      // sres.text 里面存储着网页的 html 内容，将它传给 cheerio.load 之后<br>      // 就可以得到一个实现了 jquery 接口的变量，我们习惯性地将它命名为 <code>$</code><br>      // 剩下就都是 jquery 的内容了<br>      var $ = cheerio.load(sres.text);<br>      var items = [];<br>      //找到要爬的标签 遍历所有$()里的标签元素<br>      $(‘#topic_list .topic_title’).each(function (idx, element) {<br>        var $element = $(element);<br>        //获取这个标签元素的属性 并push到定义好的items数组中<br>        items.push({<br>          title: $element.attr(‘title’),<br>          href: $element.attr(‘href’),<br>        });<br>      });<br>      res.send(items);<br>    });<br>});<br>//抓取李毅吧网页内容的示例<br>//app.get(‘/‘, function (req, res, next) {<br>//superagent.get(‘<a href="http://tieba.baidu.com/f?kw=%C0%EE%D2%E3&amp;fr=ala0&amp;tpl=5" target="_blank" rel="external">http://tieba.baidu.com/f?kw=%C0%EE%D2%E3&amp;fr=ala0&amp;tpl=5</a>‘)<br>//  .end(function (err, sres) {<br>//    if (err) {<br>//      return next(err);<br>//    }<br>//    var $ = cheerio.load(sres.text);<br>//    var items = [];<br>//    $(‘.threadlist_title a’).each(function (idx, element) {<br>//      var $element = $(element);<br>//      items.push({<br>//        title: $element.attr(‘title’),<br>//        href: $element.attr(‘href’),<br>//      });<br>//    });<br>//    res.send(items);<br>//  });<br>//});<br>app.listen(3000, function (req, res,next) {<br>  console.log(‘app is running at port 3000’);<br>});<br>//输入命令node app.js 让程序跑起来！<br></code></p>
 
       
     </div>
@@ -374,7 +407,7 @@ cheerio是node">
       
         <div class="post-tags">
           
-            <a href="/tags/superagent-cheerio/" rel="tag"># superagent&&cheerio</a>
+            <a href="/tags/jsonp/" rel="tag"># jsonp</a>
           
         </div>
       
@@ -387,8 +420,8 @@ cheerio是node">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/19/new-article/" rel="next" title="随机背景与短语js">
-                <i class="fa fa-chevron-left"></i> 随机背景与短语js
+              <a href="/2017/02/26/localStorage/" rel="next" title="html5 wed存储之localStorage">
+                <i class="fa fa-chevron-left"></i> html5 wed存储之localStorage
               </a>
             
           </div>
@@ -396,10 +429,6 @@ cheerio是node">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/26/localStorage/" rel="prev" title="html5 wed存储之localStorage">
-                html5 wed存储之localStorage <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -517,7 +546,7 @@ cheerio是node">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#要点"><span class="nav-number">1.</span> <span class="nav-text">要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码效果"><span class="nav-number">2.</span> <span class="nav-text">代码效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js代码"><span class="nav-number">3.</span> <span class="nav-text">js代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念json"><span class="nav-number">1.</span> <span class="nav-text">概念json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概念jsonp"><span class="nav-number">2.</span> <span class="nav-text">概念jsonp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsonp简单用法"><span class="nav-number">3.</span> <span class="nav-text">jsonp简单用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文字不够直观-看的也许一脸懵逼，废话不多说直接上代码"><span class="nav-number">4.</span> <span class="nav-text">文字不够直观 看的也许一脸懵逼，废话不多说直接上代码</span></a></li></ol></div>
             
 
           </div>
