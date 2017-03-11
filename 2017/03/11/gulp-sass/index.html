@@ -1,0 +1,691 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="gulp," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="用gulp 来自动编译scss;首先你得了解什么是gulp和sass概念：gulp http://www.tuicool.com/articles/IfYjyyV概念：sass 是一种css预处理器 http://www.w3cplus.com/sassguide/使用环境：电脑上必须安装node首先用node安装gulp
+1.全局安装gulp, npm install -g gulp
+2.全局安">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gulp 自动编译scss">
+<meta property="og:url" content="http://yoursite.com/2017/03/11/gulp-sass/index.html">
+<meta property="og:site_name" content="杨勇的博客">
+<meta property="og:description" content="用gulp 来自动编译scss;首先你得了解什么是gulp和sass概念：gulp http://www.tuicool.com/articles/IfYjyyV概念：sass 是一种css预处理器 http://www.w3cplus.com/sassguide/使用环境：电脑上必须安装node首先用node安装gulp
+1.全局安装gulp, npm install -g gulp
+2.全局安">
+<meta property="og:updated_time" content="2017-03-11T14:20:24.021Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gulp 自动编译scss">
+<meta name="twitter:description" content="用gulp 来自动编译scss;首先你得了解什么是gulp和sass概念：gulp http://www.tuicool.com/articles/IfYjyyV概念：sass 是一种css预处理器 http://www.w3cplus.com/sassguide/使用环境：电脑上必须安装node首先用node安装gulp
+1.全局安装gulp, npm install -g gulp
+2.全局安">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/11/gulp-sass/"/>
+
+
+
+
+
+  <title> gulp 自动编译scss | 杨勇的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨勇的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录学习的技能和遇到的问题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/gulp-sass/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="杨勇">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="杨勇的博客">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="杨勇的博客" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                gulp 自动编译scss
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T21:42:39+08:00">
+                2017-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="用gulp-来自动编译scss"><a href="#用gulp-来自动编译scss" class="headerlink" title="用gulp 来自动编译scss;"></a>用gulp 来自动编译scss;</h1><h2 id="首先你得了解什么是gulp和sass"><a href="#首先你得了解什么是gulp和sass" class="headerlink" title="首先你得了解什么是gulp和sass"></a>首先你得了解什么是gulp和sass</h2><h3 id="概念：gulp-http-www-tuicool-com-articles-IfYjyyV"><a href="#概念：gulp-http-www-tuicool-com-articles-IfYjyyV" class="headerlink" title="概念：gulp http://www.tuicool.com/articles/IfYjyyV"></a>概念：gulp <a href="http://www.tuicool.com/articles/IfYjyyV" target="_blank" rel="external">http://www.tuicool.com/articles/IfYjyyV</a></h3><h3 id="概念：sass-是一种css预处理器-http-www-w3cplus-com-sassguide"><a href="#概念：sass-是一种css预处理器-http-www-w3cplus-com-sassguide" class="headerlink" title="概念：sass 是一种css预处理器 http://www.w3cplus.com/sassguide/"></a>概念：sass 是一种css预处理器 <a href="http://www.w3cplus.com/sassguide/" target="_blank" rel="external">http://www.w3cplus.com/sassguide/</a></h3><h2 id="使用环境：电脑上必须安装node"><a href="#使用环境：电脑上必须安装node" class="headerlink" title="使用环境：电脑上必须安装node"></a>使用环境：电脑上必须安装node</h2><h2 id="首先用node安装gulp"><a href="#首先用node安装gulp" class="headerlink" title="首先用node安装gulp"></a>首先用node安装gulp</h2><ul>
+<li>1.全局安装gulp, npm install -g gulp</li>
+<li>2.全局安装gulp后，还需要在每个要使用gulp的项目中都单独安装一次。把目录切换到你的项目文件夹中，然后在命令行中执行：npm install gulp</li>
+<li>3.gulp也需要一个文件作为它的主文件，在gulp中这个文件叫做 gulpfile.js。新建一个文件名为gulpfile.js的文件，然后放到你的项目目录中。之后要做的事情就是在gulpfile.js文件中定义我们的任务了。<h2 id="用node安装gulp-sass"><a href="#用node安装gulp-sass" class="headerlink" title="用node安装gulp-sass"></a>用node安装gulp-sass</h2></li>
+<li>1.npm install gulp-sass</li>
+<li>2.(坑)使用npm安装gulp-sass插件，会报错，提示安装失败，原因应该是node-gyp不支持python3导致的。</li>
+<li><p>3.可以使用gulp-sass-china（免翻墙国情版）来替代gulp-sass，用法、配置都是一样的。</p>
+<h2 id="所有需要的东西都安装好现在就需要配置gulpfile-js文件（功能的实现全在这里配置）"><a href="#所有需要的东西都安装好现在就需要配置gulpfile-js文件（功能的实现全在这里配置）" class="headerlink" title="所有需要的东西都安装好现在就需要配置gulpfile.js文件（功能的实现全在这里配置）"></a>所有需要的东西都安装好现在就需要配置gulpfile.js文件（功能的实现全在这里配置）</h2><p><code></code></p>
+<pre><code>var gulp = require(&apos;gulp&apos;);
+var sass = require(&apos;gulp-sass&apos;);
+
+gulp.task(&quot;sass&quot;, function() {
+    return gulp.src(&quot;test/*.scss&quot;)
+        .pipe(sass().on(&quot;error&quot;, sass.logError))
+        .pipe(gulp.dest(&quot;public/css&quot;));
+});
+
+gulp.task(&apos;watch&apos;, function () {
+    gulp.watch(&quot;test/*.scss&quot;, [&quot;sass&quot;]);
+});    
+</code></pre><p></p>
+<h2 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h2></li>
+<li>头两句引入模块，没啥可说的。</li>
+<li>第5句：gulp.src() 里面参数为你的sass文件路径，比如”test/a.scss”–表示自动编译test文件夹下的a.scss。如果需要编译该文件夹下的所有scss文件，则用<em>表示所有：test/</em>.scss.</li>
+<li>第6句： 照着写。具体参数解释我也不晓得，readme里没写，我暂时也不想去找是啥意思。</li>
+<li>第7句： gulp.dest()中的参数为编译好的css文件所在的文件夹，不需要具体指定到文件名。因为gulp会自动生成一个与对应sass同名的css放在这个文件夹中,所以也不需要你事先手工创建css文件。</li>
+<li>第10~12句： 我们当然要用watch来监视所有改动的sass文件。[watch不会用的，先去看看gulp基础吧]。watch()的第一个参数，放入所有需要被监视的sass,一般来说，与第5句的参数一样</li>
+</ul>
+<h2 id="启动gulp-监视：gulp-watch"><a href="#启动gulp-监视：gulp-watch" class="headerlink" title="启动gulp 监视：gulp watch"></a>启动gulp 监视：gulp watch</h2><h2 id="然后，我在test文件夹中新建一个a-scss。并写入代码"><a href="#然后，我在test文件夹中新建一个a-scss。并写入代码" class="headerlink" title="然后，我在test文件夹中新建一个a.scss。并写入代码"></a>然后，我在test文件夹中新建一个a.scss。并写入代码</h2><h2 id="同步的，gulp自动在public-css文件下新建一个a-css并生成对应的css代码。"><a href="#同步的，gulp自动在public-css文件下新建一个a-css并生成对应的css代码。" class="headerlink" title="同步的，gulp自动在public/css文件下新建一个a.css并生成对应的css代码。"></a>同步的，gulp自动在public/css文件下新建一个a.css并生成对应的css代码。</h2><h2 id="大功告成！PS-多看看gulp的API，学会配置不同的功能，多看看sass文档熟练应用！"><a href="#大功告成！PS-多看看gulp的API，学会配置不同的功能，多看看sass文档熟练应用！" class="headerlink" title="大功告成！PS: 多看看gulp的API，学会配置不同的功能，多看看sass文档熟练应用！"></a>大功告成！PS: 多看看gulp的API，学会配置不同的功能，多看看sass文档熟练应用！</h2>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/gulp/" rel="tag"># gulp</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/26/jsonp/" rel="next" title="跨域请求之jsonp">
+                <i class="fa fa-chevron-left"></i> 跨域请求之jsonp
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="杨勇" />
+          <p class="site-author-name" itemprop="name">杨勇</p>
+           
+              <p class="site-description motion-element" itemprop="description">干一行 爱一行</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#用gulp-来自动编译scss"><span class="nav-number">1.</span> <span class="nav-text">用gulp 来自动编译scss;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先你得了解什么是gulp和sass"><span class="nav-number">1.1.</span> <span class="nav-text">首先你得了解什么是gulp和sass</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念：gulp-http-www-tuicool-com-articles-IfYjyyV"><span class="nav-number">1.1.1.</span> <span class="nav-text">概念：gulp http://www.tuicool.com/articles/IfYjyyV</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念：sass-是一种css预处理器-http-www-w3cplus-com-sassguide"><span class="nav-number">1.1.2.</span> <span class="nav-text">概念：sass 是一种css预处理器 http://www.w3cplus.com/sassguide/</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用环境：电脑上必须安装node"><span class="nav-number">1.2.</span> <span class="nav-text">使用环境：电脑上必须安装node</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#首先用node安装gulp"><span class="nav-number">1.3.</span> <span class="nav-text">首先用node安装gulp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用node安装gulp-sass"><span class="nav-number">1.4.</span> <span class="nav-text">用node安装gulp-sass</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#所有需要的东西都安装好现在就需要配置gulpfile-js文件（功能的实现全在这里配置）"><span class="nav-number">1.5.</span> <span class="nav-text">所有需要的东西都安装好现在就需要配置gulpfile.js文件（功能的实现全在这里配置）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码解释"><span class="nav-number">1.6.</span> <span class="nav-text">代码解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动gulp-监视：gulp-watch"><span class="nav-number">1.7.</span> <span class="nav-text">启动gulp 监视：gulp watch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#然后，我在test文件夹中新建一个a-scss。并写入代码"><span class="nav-number">1.8.</span> <span class="nav-text">然后，我在test文件夹中新建一个a.scss。并写入代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步的，gulp自动在public-css文件下新建一个a-css并生成对应的css代码。"><span class="nav-number">1.9.</span> <span class="nav-text">同步的，gulp自动在public/css文件下新建一个a.css并生成对应的css代码。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大功告成！PS-多看看gulp的API，学会配置不同的功能，多看看sass文档熟练应用！"><span class="nav-number">1.10.</span> <span class="nav-text">大功告成！PS: 多看看gulp的API，学会配置不同的功能，多看看sass文档熟练应用！</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨勇</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
