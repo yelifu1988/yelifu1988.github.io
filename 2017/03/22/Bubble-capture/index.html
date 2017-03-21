@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/03/22/Bubble-capture/index.html">
 <meta property="og:site_name" content="杨勇的博客">
 <meta property="og:description" content="冒泡型事件：事件按照从最特定的事件目标到最不特定的事件目标(document对象)的顺序触发。当你使用事件冒泡时，子级元素先触发，父级元素后触发捕获型事件(event capturing)：事件从最不精确的对象(document 对象)开始触发，然后到最精确(也可以在窗口级别捕获事件，不过必须由开发人员特别指定)。当你使用事件捕获时，父级元素先触发，子级元素后触发支持W3C标准的浏览器在添加事件时">
-<meta property="og:updated_time" content="2017-03-21T16:47:09.540Z">
+<meta property="og:updated_time" content="2017-03-21T16:52:14.270Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js之事件冒泡和事件捕获详细介绍">
 <meta name="twitter:description" content="冒泡型事件：事件按照从最特定的事件目标到最不特定的事件目标(document对象)的顺序触发。当你使用事件冒泡时，子级元素先触发，父级元素后触发捕获型事件(event capturing)：事件从最不精确的对象(document 对象)开始触发，然后到最精确(也可以在窗口级别捕获事件，不过必须由开发人员特别指定)。当你使用事件捕获时，父级元素先触发，子级元素后触发支持W3C标准的浏览器在添加事件时">
@@ -333,20 +333,19 @@
 <li>在W3c中，使用preventDefault（）方法；</li>
 <li>在IE下设置window.event.returnValue = false;</li>
 </ul>
-<h2 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h2><p><code><br>&lt;!DOCTYPE html&gt;</code></p>
-<p><html><br>    <head><br>        <meta charset="UTF-8"><br>        <title>事件冒泡和捕获</title><br>        <style type="text/css"></p>
-<pre><code>        #div1{
-            width: 500px;
-            height: 500px;
-            background-color: red;
-        }
-        #div2{
-            width: 200px;
-            height: 200px;
-            background-color: blue;
-        }
-    &lt;/style&gt;
-&lt;/head&gt;
+<h2 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h2><p><code><br>    <style type="text/css"></p>
+<pre><code>    #div1{
+        width: 500px;
+        height: 500px;
+        background-color: red;
+    }
+    #div2{
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+    }
+&lt;/style&gt;
+
 &lt;body&gt;
     &lt;div id=&quot;div1&quot;&gt;
         div1
@@ -373,8 +372,8 @@
 
     &lt;/script&gt;
 &lt;/body&gt;
-</code></pre><p></html><br></code></p>
-</style></head></html></p>
+</code></pre><p></code></p>
+</style></code></p>
       
     </div>
 
